@@ -39,6 +39,7 @@ public class Test {
 			for (Equipo e:equipos) {
 				System.out.println(e);
 				
+				
 				System.out.println("-------------Actualizacion---------------");
 				equipos.get(2).setNombre("Prueba actualizado");
 				persEqu.actualizarListadoEquipos(equipos);
