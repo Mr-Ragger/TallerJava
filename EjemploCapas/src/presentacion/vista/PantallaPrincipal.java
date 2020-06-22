@@ -8,6 +8,8 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.TextArea;
 import java.awt.TextField;
+import java.awt.event.ActionEvent;
+
 import javax.swing.JPanel;
 import java.awt.Panel;
 import javax.swing.Box;
@@ -15,6 +17,9 @@ import javax.swing.SwingConstants;
 import javax.swing.BoxLayout;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+
+import presentacion.controlador.ActionListener;
+
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.JMenuItem;
@@ -34,6 +39,8 @@ public class PantallaPrincipal {
 	private JTextField txtApellidosEntrenador;
 	private JTextField txtFechaInicioEntreno;
 	private JTextField txtJugadores;
+	private JMenuItem mntmNuevo;
+	private JMenuItem mntmBuscar;
 
 	/**
 	 * Launch the application.
@@ -177,10 +184,10 @@ public class PantallaPrincipal {
 		JMenu mnEquipo = new JMenu("Equipo");
 		menuBar.add(mnEquipo);
 		
-		JMenuItem mntmNuevo = new JMenuItem("Nuevo");
+		mntmNuevo = new JMenuItem("Nuevo");
 		mnEquipo.add(mntmNuevo);
 		
-		JMenuItem mntmBuscar = new JMenuItem("Buscar");
+		mntmBuscar = new JMenuItem("Buscar");
 		mnEquipo.add(mntmBuscar);
 		
 		JMenu mnEntrenador = new JMenu("Entrenador");
@@ -201,6 +208,11 @@ public class PantallaPrincipal {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("New menu item");
 		mnJugador.add(mntmNewMenuItem_1);
 	}
-	//Escuchadres
+
+	public void addmnUNueviEquipoActionPerformed(ActionEvent actionListener) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 }
