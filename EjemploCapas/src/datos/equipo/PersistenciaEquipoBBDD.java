@@ -88,8 +88,33 @@ public class PersistenciaEquipoBBDD extends PersistenciaBBDD implements IPersist
 
 	@Override
 	public boolean insertarListadoEquipos(List<Equipo> listadoEquipos) throws ConexionBBDDException {
-		// TODO Auto-generated method stub
-		return false;
+		String consulta = "INSERT INTO equipo (nombre,anho_fundacion) VALUES (?,?)";
+		try {
+			cargarDriverConexionBBDD();
+			
+			Connection con = obtenerConexion();
+
+			PreparedStatement ps = con.prepareStatement(consulta);
+
+			for(Equipo e:listadoEquipos) {
+				ps.setString(1,e.getNombre());
+				ps.setInt(2, e.getAnhoFundacion());
+				ps.addBatch();
+			}
+			
+			ps.executeBatch();
+			
+			return true;
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			GestorLog.logError("No se ha completado la insercion", e.getStackTrace());
+			e.printStackTrace();
+			return false;
+		}
+		finally {
+			cerrarConexion();
+		}
+
 	}
 
 	@Override
@@ -100,7 +125,15 @@ public class PersistenciaEquipoBBDD extends PersistenciaBBDD implements IPersist
 
 	@Override
 	public boolean actualizarListadoEquipos(List<Equipo> listaEquipos) throws ConexionBBDDException {
-		// TODO Auto-generated method stub
+		String consulta = "Update equipo set nombre=?, anho_fundacion=? where id=? ";
+		
+//		for(Equipo e:listaEquipos) {
+//			ps.setString(1,e.getNombre());
+//			ps.setInt(2, e.getAnhoFundacion());
+//			ps.setInt(3, e.getId());
+//			ps.addBatch();
+//		}
+//			
 		return false;
 	}
 
