@@ -3,6 +3,7 @@ package presentacion.vista;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -15,9 +16,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class NuevoEquipo extends JDialog {
+public class BuscarEquipo extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtId;
@@ -25,13 +27,14 @@ public class NuevoEquipo extends JDialog {
 	private JTextField txtAnhoFund;
 	private JButton btnGuardar;
 	private JButton btnCancelar;
+	private JComboBox<PEquipo> cbEquipo;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		try {
-			NuevoEquipo dialog = new NuevoEquipo();
+			BuscarEquipo dialog = new BuscarEquipo();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -42,7 +45,7 @@ public class NuevoEquipo extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public NuevoEquipo() {
+	public BuscarEquipo() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -67,12 +70,14 @@ public class NuevoEquipo extends JDialog {
 		}
 		{
 			txtNombre = new JTextField();
+			txtNombre.setEditable(false);
 			txtNombre.setBounds(104, 99, 181, 20);
 			contentPanel.add(txtNombre);
 			txtNombre.setColumns(10);
 		}
 		{
 			txtAnhoFund = new JTextField();
+			txtAnhoFund.setEditable(false);
 			txtAnhoFund.setBounds(104, 130, 181, 20);
 			contentPanel.add(txtAnhoFund);
 			txtAnhoFund.setColumns(10);
@@ -82,6 +87,10 @@ public class NuevoEquipo extends JDialog {
 			lblAoDeFundacion.setBounds(10, 133, 84, 14);
 			contentPanel.add(lblAoDeFundacion);
 		}
+		
+		cbEquipo = new JComboBox();
+		cbEquipo.setBounds(66, 11, 219, 20);
+		contentPanel.add(cbEquipo);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -142,6 +151,11 @@ public class NuevoEquipo extends JDialog {
 			
 		}
 		return valido;
+	}
+
+	public void mostrarEquiposDesplegable(ArrayList<PEquipo> listaEquiposPresentacion) {
+		// TODO Auto-generated method stub
+		cbEquipo.setModel(new DefaultComboBoxModel<PEquipo>(listaEquiposPresentacion.toArray(new PEquipo[0])));
 	}
 	 
 }

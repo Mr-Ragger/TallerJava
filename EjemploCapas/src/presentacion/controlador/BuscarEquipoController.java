@@ -11,19 +11,37 @@ import negocio.persistencia.equipo.IPersistenciaEquipo;
 import presentacion.controlador.mapeadorpresentacion.MapeadorEntrenador;
 import presentacion.controlador.mapeadorpresentacion.MapeadorEquipo;
 import presentacion.entidades.PEquipo;
+import presentacion.vista.BuscarEquipo;
 import presentacion.vista.NuevoEquipo;
 
-public class NuevoEquipoController {
+public class BuscarEquipoController {
 
-	private NuevoEquipo vista;
+	private BuscarEquipo vista;
 
-	public NuevoEquipoController(NuevoEquipo vista) {
+	public BuscarEquipoController(BuscarEquipo vista) {
 		this.vista = vista;
 
 		vista.setVisible(true);
 		vista.setLocationRelativeTo(null);
 
 		anhadirListeners();
+		mostrarEquiposDesplegable();
+		
+	}
+	
+	private void mostrarEquiposDesplegable() {
+		IPersistenciaEquipo persEq = new PersistenciaEquipoBBDD();
+		try {
+			ArrayList<Equipo> listaEquipos =  (ArrayList<Equipo>) persEq.obtenerListadoEquipos(null);
+			
+			ArrayList<PEquipo> listaEquiposPresentacion = MapeadorEquipo.obtenerPEquipo(listaEquipos);
+			
+			vista.mostrarEquiposDesplegable(listaEquiposPresentacion);
+			
+		} catch (ConexionBBDDException e) {
+		
+			e.printStackTrace();
+		}
 	}
 
 	private void anhadirListeners() {
@@ -31,10 +49,7 @@ public class NuevoEquipoController {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (vista.validarFormulario()) {
-					guardarDatosEquipo();
-					vista.dispose();
-				}
+
 			}
 		});
 		vista.addbtnCancelarActionListener(new ActionListener() {
