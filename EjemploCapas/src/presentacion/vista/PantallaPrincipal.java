@@ -1,6 +1,6 @@
 package presentacion.vista;
 
-import java.awt.EventQueue;
+
 
 import javax.swing.JFrame;
 import javax.swing.JToolBar;
@@ -18,7 +18,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-import presentacion.controlador.ActionListener;
 
 import javax.swing.border.LineBorder;
 import java.awt.Color;
@@ -185,6 +184,7 @@ public class PantallaPrincipal {
 		menuBar.add(mnEquipo);
 		
 		mntmNuevo = new JMenuItem("Nuevo");
+
 		mnEquipo.add(mntmNuevo);
 		
 		mntmBuscar = new JMenuItem("Buscar");
@@ -209,9 +209,9 @@ public class PantallaPrincipal {
 		mnJugador.add(mntmNewMenuItem_1);
 	}
 
-	public void addmnUNueviEquipoActionPerformed(ActionEvent actionListener) {
+	public void addmnUNueviEquipoActionPerformed(java.awt.event.ActionListener actionListener) {
 		// TODO Auto-generated method stub
-		
+		mntmNuevo.addActionListener(actionListener);
 	}
 	
 	

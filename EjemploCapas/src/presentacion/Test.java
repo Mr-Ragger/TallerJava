@@ -20,15 +20,15 @@ public class Test {
 				System.out.println(e);
 			}
 			
-			System.out.println("depor -------------------");
+			System.out.println("depor");
 			FiltroEquipo filtro = new FiltroEquipo();
-			filtro.nombre = "De";
+			filtro.nombre = "de";
 			equipos = (ArrayList<Equipo>) persEqu.obtenerListadoEquipos(filtro);
 			for(Equipo e:equipos) {
 				System.out.println(e);
 			}
 			
-			System.out.println("Insercion");
+			System.out.println("----------------------Insercion--------------");
 			
 			Equipo eq = new Equipo (0,"prueba1", 2020);
 			ArrayList<Equipo> listaInsert = new ArrayList<>();
@@ -41,7 +41,7 @@ public class Test {
 				
 				
 				System.out.println("-------------Actualizacion---------------");
-				equipos.get(2).setNombre("Prueba actualizado");
+				equipos.get(1).setNombre("Prueba actualizado");
 				persEqu.actualizarListadoEquipos(equipos);
 				
 			}

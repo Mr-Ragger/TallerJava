@@ -22,7 +22,7 @@ public class PersistenciaEquipoBBDD extends PersistenciaBBDD implements IPersist
 		// TODO Auto-generated method stub
 		String consulta = "Select id, nombre, anho_fundacion from equipo";
 		ArrayList<Equipo> listaEquipos = new ArrayList<Equipo>();
-		String clausulaWhere = "where";
+		String clausulaWhere = "";
 
 		try {
 			cargarDriverConexionBBDD();
@@ -41,17 +41,17 @@ public class PersistenciaEquipoBBDD extends PersistenciaBBDD implements IPersist
 						if(!clausulaWhere.isEmpty()) {
 							clausulaWhere = clausulaWhere + " and ";
 						}
-						clausulaWhere = clausulaWhere + " nombre like '?' ";
+						clausulaWhere = clausulaWhere + " nombre like ? ";
 					}
 					if (!clausulaWhere.isEmpty()) {
 						clausulaWhere = " where " + clausulaWhere;
 					}
 			}
 			
-			PreparedStatement ps = con.prepareStatement(consulta);
+			PreparedStatement ps = con.prepareStatement(consulta + clausulaWhere);
 
 			if(filtro != null && clausulaWhere !=null && !clausulaWhere.isEmpty()) {
-				int indice = 0;
+				int indice = 1;
 				 if(filtro.id != null) {
 					 ps.setInt(indice,  filtro.id);
 					 indice++;

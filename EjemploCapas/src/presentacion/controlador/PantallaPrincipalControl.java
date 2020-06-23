@@ -1,7 +1,9 @@
 package presentacion.controlador;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import presentacion.vista.NuevoEquipo;
 import presentacion.vista.PantallaPrincipal;
 
 public class PantallaPrincipalControl {
@@ -25,11 +27,17 @@ public class PantallaPrincipalControl {
 		vista.addmnUNueviEquipoActionPerformed(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent e) {
-				mostratPantallaNuevoEquipo();
+				mostrarPantallaNuevoEquipo();
 			}
 		});
 			
 		}
+	
+	
+	
+	private void mostrarPantallaNuevoEquipo() {
+		NuevoEquipo dialogo = new NuevoEquipo();
+		new NuevoEquipoController(dialogo);
 	}
 	
 	
