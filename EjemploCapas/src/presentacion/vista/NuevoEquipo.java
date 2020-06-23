@@ -7,7 +7,11 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import presentacion.entidades.PEquipo;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
@@ -112,4 +116,36 @@ public class NuevoEquipo extends JDialog {
 	public void addbtnCancelarActionListener(ActionListener listener) {
 		btnCancelar.addActionListener(listener);
 	}
+	
+	
+	public PEquipo obtenerDatos() {
+		PEquipo eq = new PEquipo();
+		eq.nombre = txtNombre.getText()	;
+		eq.anhoFundacion = Integer.valueOf(txtAnhoFund.getText());
+		return eq;		
+	}
+	
+	public boolean validarFormulario() {
+		boolean valido = true;
+		if (txtNombre.getText().isEmpty()) {
+			
+			JOptionPane.showMessageDialog(null,"El campo de nombre es obligatorio");
+			valido = false;		
+		}else {
+			if(txtAnhoFund.getText().isEmpty()) {
+				JOptionPane.showMessageDialog(null, "El anño de fundacion es obligatorio");
+				valido = false;
+			}else {
+				try {
+					Integer.valueOf(txtAnhoFund.getText());
+				} catch (NumberFormatException e) {
+					JOptionPane.showMessageDialog(null, "El campo de creacion debe de ser numerico");
+					valido = false;
+				}
+			}
+			
+		}
+		return valido;
+	}
+	 
 }
