@@ -213,6 +213,10 @@ public class PantallaPrincipal {
 		// TODO Auto-generated method stub
 		mntmNuevo.addActionListener(actionListener);
 	}
+	public void addmnUBuscarEquipoActionPerformed(java.awt.event.ActionListener actionListener) {
+		// TODO Auto-generated method stub
+		mntmBuscar.addActionListener(actionListener);
+	}
 	
 	
 }
